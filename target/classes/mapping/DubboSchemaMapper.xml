@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xll.mapper.DubboSchemaMapper" >
+  <resultMap id="BaseResultMap" type="com.xll.model.DubboSchema" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="url_para" property="urlPara" jdbcType="VARCHAR" />
+    <result column="attri" property="attri" jdbcType="VARCHAR" />
+    <result column="attri_type" property="attriType" jdbcType="VARCHAR" />
+    <result column="is_write" property="isWrite" jdbcType="BIT" />
+    <result column="default_value" property="defaultValue" jdbcType="VARCHAR" />
+    <result column="func" property="func" jdbcType="VARCHAR" />
+    <result column="descript" property="descript" jdbcType="VARCHAR" />
+    <result column="compatible_ability" property="compatibleAbility" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, title, url_para, attri, attri_type, is_write, default_value, func, descript, 
+    compatible_ability, create_time, update_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xll.model.DubboSchemaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from dubbo_schema
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.xll.model.DubboSchema" >
+    insert into dubbo_schema (id, title, url_para,
+      attri, attri_type, is_write, 
+      default_value, func, descript, 
+      compatible_ability, create_time, update_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{urlPara,jdbcType=VARCHAR}, 
+      #{attri,jdbcType=VARCHAR}, #{attriType,jdbcType=VARCHAR}, #{isWrite,jdbcType=BIT}, 
+      #{defaultValue,jdbcType=VARCHAR}, #{func,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, 
+      #{compatibleAbility,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+</mapper>
