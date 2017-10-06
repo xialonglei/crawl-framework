@@ -1,3 +1,4 @@
+spring+mybatis+maven
 # crawl-framework
 一个低功能的小型爬虫框架，功能很简陋，主要功能如下：
 1. <p> 支持多级爬取(url->urls->内容)，并且父级网页可以向子类网页传递参数（这个现在只支持两级）</p>
@@ -16,7 +17,7 @@
 DubboSchemaImport dubboSchemaExport = new DubboSchemaImport();
 dubboSchemaExport.assemblyStoreDatas(pageCrawlRule , content);
 ```
-6. <p> 程序我爬取了阿里dubbo_schema</p>，下面是dubbo_schema的DDL
+6. <p> 程序我爬取了阿里dubbo_schema，下面是dubbo_schema的DDL</p>
 
 ```
 CREATE TABLE `dubbo_schema` (
