@@ -16,4 +16,25 @@
 DubboSchemaImport dubboSchemaExport = new DubboSchemaImport();
 dubboSchemaExport.assemblyStoreDatas(pageCrawlRule , content);
 ```
+6. <p> 程序我爬取了阿里dubbo_schema</p>，下面是dubbo_schema的DDL
+
+```
+CREATE TABLE `dubbo_schema` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `attri` varchar(64) DEFAULT '' COMMENT '属性',
+  `url_para` varchar(64) DEFAULT '' COMMENT '对应URL参数',
+  `attri_type` varchar(32) DEFAULT '' COMMENT '类型',
+  `is_write` bit(1) DEFAULT b'0' COMMENT '是否必填 （1：是，0：否）',
+  `default_value` varchar(1000) DEFAULT '' COMMENT '缺省值',
+  `func` varchar(64) DEFAULT '' COMMENT '作用',
+  `descript` varchar(255) DEFAULT '' COMMENT '描述',
+  `compatible_ability` varchar(64) DEFAULT '' COMMENT '兼容性',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `title` (`title`,`attri`)
+) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8;
+```
+7. 启动程序Bootstrap，就能将dubbo_schema数据入库到dubbo_schema表中，这里有一个不好的地方就是我有些字段没有表明not null，自己可以修改下加上默认值
   
