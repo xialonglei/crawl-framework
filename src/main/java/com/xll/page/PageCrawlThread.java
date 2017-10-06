@@ -1,7 +1,6 @@
 package com.xll.page;
 
-import com.xll.exportdb.DubboSchemaExport;
-import com.xll.model.DubboSchema;
+import com.xll.importdb.DubboSchemaImport;
 import com.xll.page.model.FieldParse;
 import com.xll.page.model.PageCrawlRule;
 import com.xll.page.model.PageInfo;
@@ -26,10 +25,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.util.*;
 
 /**
@@ -264,7 +261,7 @@ public class PageCrawlThread implements Runnable {
         }
 
         //开始执行入库
-        DubboSchemaExport dubboSchemaExport = new DubboSchemaExport();
+        DubboSchemaImport dubboSchemaExport = new DubboSchemaImport();
         dubboSchemaExport.assemblyStoreDatas(pageCrawlRule , content);
     }
 

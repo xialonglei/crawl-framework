@@ -1,4 +1,4 @@
-package com.xll.exportdb;
+package com.xll.importdb;
 
 import com.xll.page.model.PageCrawlRule;
 

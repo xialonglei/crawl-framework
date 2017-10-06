@@ -64,7 +64,7 @@
     </if>
   </select>
   <insert id="insert" parameterType="com.xll.model.DubboSchema" >
-    insert into dubbo_schema (id, title, url_para,
+    insert ignore into dubbo_schema (id, title, url_para,
       attri, attri_type, is_write, 
       default_value, func, descript, 
       compatible_ability, create_time, update_time

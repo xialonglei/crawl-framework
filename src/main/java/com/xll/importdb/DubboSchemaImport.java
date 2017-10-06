@@ -1,7 +1,6 @@
-package com.xll.exportdb;
+package com.xll.importdb;
 
 import com.xll.model.DubboSchema;
-import com.xll.page.PageCrawlThread;
 import com.xll.page.model.PageCrawlRule;
 import com.xll.service.DubboSchemaService;
 import org.slf4j.Logger;
@@ -17,9 +16,9 @@ import java.util.Map;
 /**
  * Created by lonely.xia on 2017/10/3.
  */
-public class DubboSchemaExport implements Export<DubboSchema> {
+public class DubboSchemaImport implements Export<DubboSchema> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DubboSchemaExport.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DubboSchemaImport.class);
 
     @Override
     public void writeDataToDB(List<DubboSchema> datas) {
